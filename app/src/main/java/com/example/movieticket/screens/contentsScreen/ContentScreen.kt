@@ -1,5 +1,6 @@
 package com.example.movieticket.screens.contentsScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -62,7 +63,8 @@ private fun DetailsContent(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(vertical = 16.dp),
+                    .padding(vertical = 16.dp)
+                    .background(Color.White),
                 verticalArrangement = Arrangement.SpaceBetween,
 
                 ) {
