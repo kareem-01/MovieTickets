@@ -1,7 +1,7 @@
 package com.example.movieticket.screens.Buy
 
-import com.example.studycompose.UiStates.SeatUiState
-import com.example.studycompose.UiStates.BuyScreenGridItemUiState
+import com.example.movieticket.UiStates.SeatUiState
+import com.example.movieticket.UiStates.BuyScreenGridItemUiState
 
 data class SeatsUiModel(
     val seats: List<BuyScreenGridItemUiState> = seatsFakeData,

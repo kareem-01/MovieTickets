@@ -25,13 +25,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.studycompose.R
-import com.example.studycompose.UiStates.SeatUiState
-import com.example.studycompose.UiStates.BuyScreenGridItemUiState
-import com.example.studycompose.composable.ExitButton
-import com.example.studycompose.composable.SelectionItem
-import com.example.studycompose.composable.SpacerVertical8
-import com.example.studycompose.ui.theme.Orange
+import com.example.movieticket.R
+import com.example.movieticket.UiStates.SeatUiState
+import com.example.movieticket.UiStates.BuyScreenGridItemUiState
+import com.example.movieticket.composable.ExitButton
+import com.example.movieticket.composable.SelectionItem
+import com.example.movieticket.composable.SpacerVertical8
+import com.example.movieticket.ui.theme.Orange
 
 @Composable
 fun SecondScreenTop(

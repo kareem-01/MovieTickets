@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.studycompose.ui.theme.Text63
+import com.example.movieticket.ui.theme.Text63
 
 @Composable
 fun CalenderItem(dayNumber: String, day: String) {

@@ -1,6 +1,6 @@
 package com.example.movieticket
 
-import com.example.studycompose.models.Movie
+import com.example.movieticket.models.Movie
 
 val movies = listOf(
     Movie(

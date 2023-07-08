@@ -11,7 +11,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.studycompose.ui.theme.Text63
+import com.example.movieticket.ui.theme.Text63
 
 @Composable
 fun LittleColumn(firsString: String, secondString: String,thirdString: String) {

@@ -7,9 +7,9 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import com.example.studycompose.UiStates.SeatUiState
-import com.example.studycompose.screens.Buy.SeatsUiModel
-import com.example.studycompose.ui.theme.Orange
+import com.example.movieticket.UiStates.SeatUiState
+import com.example.movieticket.screens.Buy.SeatsUiModel
+import com.example.movieticket.ui.theme.Orange
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

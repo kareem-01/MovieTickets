@@ -64,7 +64,7 @@ fun MovieTicketTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = GoogleSansTypography,
         content = content
     )
 }

@@ -22,9 +22,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.studycompose.R
-import com.example.studycompose.ui.theme.lightGray
-import com.example.studycompose.ui.theme.whiteColor
+import com.example.movieticket.R
+import com.example.movieticket.ui.theme.lightGray
+import com.example.movieticket.ui.theme.whiteColor
 
 @Composable
 fun DurationBox(time: String, background: Color, textColor: Color) {

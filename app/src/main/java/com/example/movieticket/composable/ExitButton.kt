@@ -23,8 +23,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.studycompose.R
-import com.example.studycompose.ui.theme.lightGray
+import com.example.movieticket.R
+import com.example.movieticket.ui.theme.lightGray
 
 @Composable
 fun ExitButton(onClick: () -> Unit) {
