@@ -124,11 +124,14 @@ private fun HomeContent(
                     }
                 }
                 item {
-                    DurationBox(
-                        time = movies[pagerState.currentPage].time,
-                        background = Color.Transparent,
-                        textColor = Color.Black
-                    )
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                        DurationBox(
+                            time = movies[pagerState.currentPage].time,
+                            background = Color.Transparent,
+                            textColor = Color.Black
+                        )
+                    }
+
                 }
                 item {
                     MovieTitle(name = movies[pagerState.currentPage].name)

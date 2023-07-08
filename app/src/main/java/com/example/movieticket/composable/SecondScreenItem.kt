@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -27,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.movieticket.R
 import com.example.movieticket.UiStates.SeatUiState
+import com.example.movieticket.composable.Seats
 import com.example.movieticket.ui.theme.Orange
 
 
@@ -37,17 +39,26 @@ fun SeatItem(
     onItemClick: (seat: Int,index:Int) -> Unit,
     angle: Float = 0f,
     modifier: Modifier = Modifier,
-    index:Int
+    index:Int,
+    setColor:(index:Int,seat:Seats)->Color,
 ) {
     LaunchedEffect(
         leftState.isSelected,
         leftState.isSelected,
         rightState.Available,
-        rightState.isSelected
+        rightState.isSelected,
+
     ) {
 
-        Log.i("TAG", "Value Changed")
+
     }
+val leftColor by remember {
+    mutableStateOf(Color)
+}
+val rightColor by remember {
+    mutableStateOf(Color)
+}
+
 
     Box(
         modifier = modifier
@@ -74,21 +85,21 @@ fun SeatItem(
             Icon(
                 painter = painterResource(id = R.drawable.seat_icon),
                 contentDescription = null,
-                tint = if (leftState.isSelected) Orange else if (leftState.isTaken) Color.DarkGray else White,
+                tint = setColor(index,Seats.LeftSeat),
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxSize()
-                    .clickable { onItemClick(leftState.id,index) }
+                    .clickable { onItemClick(leftState.id, index) }
 
             )
             Icon(
                 painter = painterResource(id = R.drawable.seat_icon),
                 contentDescription = null,
-                tint = if (rightState.isSelected) Orange else if (rightState.isTaken) Color.DarkGray else White,
+                tint =  setColor(index,Seats.RightSeat) ,
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxSize()
-                    .clickable { Log.i("Clicked","YES") }
+                    .clickable { Log.i("leftClicked", "$leftState") }
             )
         }
     }

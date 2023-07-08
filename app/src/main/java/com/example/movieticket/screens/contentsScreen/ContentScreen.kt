@@ -54,7 +54,7 @@ private fun DetailsContent(
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.55f)
+                .fillMaxHeight(0.6f)
                 .align(Alignment.BottomCenter),
             shape = RoundedCornerShape(topEnd = 25.dp, topStart = 25.dp),
             colors = CardDefaults.cardColors(contentColor = Color.White),

@@ -31,6 +31,7 @@ import com.example.movieticket.UiStates.BuyScreenGridItemUiState
 import com.example.movieticket.composable.BuyButton
 import com.example.movieticket.composable.CalenderItem
 import com.example.movieticket.composable.MovieTags
+import com.example.movieticket.composable.Seats
 import com.example.movieticket.screens.Buy.composables.SecondScreenTop
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -44,33 +45,38 @@ fun BuyScreen(
 ) {
     val state by viewModel.seatsFakeState.collectAsState()
 
-    val seats = remember {
-        mutableStateOf(state.seats)
-    }
+
     val days = getNextSevenDays()
 
     BuyContent(
-        items = seats,
+        items = state.seats,
         days = days,
         onClickBack = {viewModel.onBackClick(navController)} ,
         onSeatClick =
-        viewModel::onSeatClick
+        viewModel::onSeatClick,
+        setColor = viewModel::setColor
     )
 }
 
 @Composable
 fun BuyContent(
-    items: MutableState<List<BuyScreenGridItemUiState>>,
+    items: List<BuyScreenGridItemUiState>,
     onClickBack: () -> Unit,
     onSeatClick: (seat: Int, index: Int) -> Unit,
     days: List<String>,
+    setColor:(index:Int,Seats)->Color
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Black)
     ) {
-        SecondScreenTop(items, onBack = onClickBack, onSeatClick = onSeatClick)
+        SecondScreenTop(
+            items,
+            onBack = onClickBack,
+            onSeatClick = onSeatClick,
+            setColor = setColor
+        )
 
         Column(
             modifier = Modifier

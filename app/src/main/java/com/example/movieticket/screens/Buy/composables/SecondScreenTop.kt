@@ -29,15 +29,17 @@ import com.example.movieticket.R
 import com.example.movieticket.UiStates.SeatUiState
 import com.example.movieticket.UiStates.BuyScreenGridItemUiState
 import com.example.movieticket.composable.ExitButton
+import com.example.movieticket.composable.Seats
 import com.example.movieticket.composable.SelectionItem
 import com.example.movieticket.composable.SpacerVertical8
 import com.example.movieticket.ui.theme.Orange
 
 @Composable
 fun SecondScreenTop(
-    items: MutableState<List<BuyScreenGridItemUiState>>,
+    items: List<BuyScreenGridItemUiState>,
     onBack: () -> Unit,
     onSeatClick: (seat: Int,index:Int) -> Unit,
+    setColor:(index:Int,seat:Seats)->Color
 ) {
     Column(
         modifier = Modifier
@@ -73,29 +75,32 @@ fun SecondScreenTop(
                 Box(Modifier.padding(bottom = 8.dp)) {
                     when (index) {
                         0, 3, 6, 9, 12 -> SeatItem(
-                            leftState = items.value[index].leftItemUiState,
-                            rightState = items.value[index].RightItemUiState,
+                            leftState = items[index].leftItemUiState,
+                            rightState = items[index].RightItemUiState,
                             onItemClick = onSeatClick,
                             angle = 10f,
                             modifier = Modifier.offset(x = 17.dp),
-                            index = index
+                            index = index,
+                            setColor
                         )
 
                         2, 5, 8, 11, 14 -> SeatItem(
-                            leftState = items.value[index].leftItemUiState,
-                            rightState = items.value[index].RightItemUiState,
+                            leftState = items[index].leftItemUiState,
+                            rightState = items[index].RightItemUiState,
                             onItemClick = onSeatClick,
                             angle = -10f,
                             modifier = Modifier.offset(x = 17.dp),
-                            index
+                            index,
+                            setColor
                         )
 
                         else -> SeatItem(
-                            leftState = items.value[index].leftItemUiState,
-                            rightState = items.value[index].RightItemUiState,
+                            leftState = items[index].leftItemUiState,
+                            rightState = items[index].RightItemUiState,
                             onItemClick = onSeatClick,
                             modifier = Modifier.offset(y = 10.dp, x = 17.dp),
-                            index = index
+                            index = index,
+                            setColor = setColor
                         )
                     }
                 }
