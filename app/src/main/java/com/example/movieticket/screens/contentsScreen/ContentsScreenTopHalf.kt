@@ -58,7 +58,7 @@ fun setTopImage(onClick:()->Unit,time:String) {
             DurationBox(
                 time = time,
                 background = White.copy(alpha = .40f),
-                textColor = primaryTextColor
+                textColor = White
             )
 
         }

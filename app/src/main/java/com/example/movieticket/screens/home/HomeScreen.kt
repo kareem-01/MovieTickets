@@ -117,9 +117,7 @@ private fun HomeContent(
                                         .clickable { onClick(movies[page].id) }
                                 )
 
-
                             }
-
                         }
                     }
                 }
