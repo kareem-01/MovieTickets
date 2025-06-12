@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 fun MovieTitle(name:String){
     Text(
         text = name,
-        modifier = Modifier.padding(horizontal = 30.dp).fillMaxWidth().height(50.dp),
+        modifier = Modifier.padding(horizontal = 30.dp).fillMaxWidth().padding(horizontal = 16.dp),
         style = MaterialTheme.typography.titleMedium,
         color = Color.Black,
         fontSize = 24.sp,

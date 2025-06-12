@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -19,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -39,9 +42,10 @@ import com.example.movieticket.composable.SpacerHorizontal
 
 @Composable
 fun DetailsScreen(navController: NavController) {
-    DetailsContent(onclickBack = {
-        navController.popBackStack()
-    },
+    DetailsContent(
+        onclickBack = {
+            navController.popBackStack()
+        },
         onButtonClick = { navController.navigate(Screen.BuyScreen.route) })
 }
 
@@ -56,17 +60,21 @@ private fun DetailsContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.6f)
-                .align(Alignment.BottomCenter),
+                .align(Alignment.BottomCenter)
+                .verticalScroll(rememberScrollState())
+                .clip(RoundedCornerShape(topEnd = 25.dp, topStart = 25.dp))
+            ,
             shape = RoundedCornerShape(topEnd = 25.dp, topStart = 25.dp),
-            colors = CardDefaults.cardColors(contentColor = Color.White),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(vertical = 16.dp)
-                    .background(Color.White),
+                    .background(Color.White)
+                    .clip(RoundedCornerShape(topEnd = 25.dp, topStart = 25.dp))
+                ,
                 verticalArrangement = Arrangement.SpaceBetween,
-
                 ) {
                 Row(
                     modifier = Modifier
@@ -142,7 +150,12 @@ private fun DetailsContent(
                     textAlign = TextAlign.Center
 
                 )
-                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp),
+                    contentAlignment = Alignment.Center
+                ) {
                     BuyButton(title = "Booking", onButtonClick)
 
                 }

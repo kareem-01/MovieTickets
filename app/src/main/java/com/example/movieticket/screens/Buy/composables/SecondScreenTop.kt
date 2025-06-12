@@ -16,31 +16,34 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.movieticket.R
-import com.example.movieticket.UiStates.SeatUiState
 import com.example.movieticket.UiStates.BuyScreenGridItemUiState
 import com.example.movieticket.composable.ExitButton
 import com.example.movieticket.composable.Seats
 import com.example.movieticket.composable.SelectionItem
 import com.example.movieticket.composable.SpacerVertical8
+import com.example.movieticket.screens.Buy.CustomShape
 import com.example.movieticket.ui.theme.Orange
 
 @Composable
 fun SecondScreenTop(
     items: List<BuyScreenGridItemUiState>,
     onBack: () -> Unit,
-    onSeatClick: (seat: Int,index:Int) -> Unit,
-    setColor:(index:Int,seat:Seats)->Color
+    onSeatClick: (seat: Int, index: Int) -> Unit,
+    setColor: (index: Int, seat: Seats) -> Color
 ) {
+    val customBannerShape = CustomShape()
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -57,14 +60,17 @@ fun SecondScreenTop(
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(60.dp),
+                .height(60.dp)
+                .clip(customBannerShape),
             contentScale = ContentScale.FillWidth
         )
         LazyVerticalGrid(
             columns = GridCells.Fixed(3),
             modifier = Modifier
                 .padding(top = 32.dp, bottom = 16.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .height(300.dp)
+            ,
             verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             contentPadding = PaddingValues(vertical = 8.dp)
@@ -78,10 +84,10 @@ fun SecondScreenTop(
                             leftState = items[index].leftItemUiState,
                             rightState = items[index].RightItemUiState,
                             onItemClick = onSeatClick,
-                            angle = 10f,
                             modifier = Modifier.offset(x = 17.dp),
+                            angle = 10f,
                             index = index,
-                            setColor
+                            setColor = setColor
                         )
 
                         2, 5, 8, 11, 14 -> SeatItem(
@@ -90,8 +96,8 @@ fun SecondScreenTop(
                             onItemClick = onSeatClick,
                             angle = -10f,
                             modifier = Modifier.offset(x = 17.dp),
-                            index,
-                            setColor
+                            index = index,
+                            setColor = setColor
                         )
 
                         else -> SeatItem(

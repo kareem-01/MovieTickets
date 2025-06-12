@@ -4,9 +4,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -29,18 +30,17 @@ import androidx.compose.ui.unit.dp
 import com.example.movieticket.R
 import com.example.movieticket.UiStates.SeatUiState
 import com.example.movieticket.composable.Seats
-import com.example.movieticket.ui.theme.Orange
 
 
 @Composable
 fun SeatItem(
     leftState: SeatUiState,
     rightState: SeatUiState,
-    onItemClick: (seat: Int,index:Int) -> Unit,
-    angle: Float = 0f,
+    onItemClick: (seat: Int, index: Int) -> Unit,
     modifier: Modifier = Modifier,
-    index:Int,
-    setColor:(index:Int,seat:Seats)->Color,
+    angle: Float = 0f,
+    setColor: (index: Int, seat: Seats) -> Color,
+    index: Int,
 ) {
     LaunchedEffect(
         leftState.isSelected,
@@ -48,24 +48,24 @@ fun SeatItem(
         rightState.Available,
         rightState.isSelected,
 
-    ) {
+        ) {
 
 
     }
-val leftColor by remember {
-    mutableStateOf(Color)
-}
-val rightColor by remember {
-    mutableStateOf(Color)
-}
+    val leftColor by remember {
+        mutableStateOf(setColor(index, Seats.LeftSeat))
+    }
+    val rightColor by remember {
+        mutableStateOf(setColor(index, Seats.RightSeat))
+    }
 
 
     Box(
         modifier = modifier
+            .wrapContentSize()
             .graphicsLayer { rotationZ = angle }
             .clip(RoundedCornerShape(16.dp))
-            .width(90.dp)
-            .height(40.dp),
+            .width(90.dp),
         contentAlignment = Alignment.Center,
 
 
@@ -73,19 +73,21 @@ val rightColor by remember {
         Icon(
             painter = painterResource(id = R.drawable.chair_place_holder),
             contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-            tint = White
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(4.dp),
+            tint = White.copy(.38f)
         )
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 0.dp, bottom = 8.dp, start = 8.dp, end = 8.dp),
-            horizontalArrangement = Arrangement.SpaceAround
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.seat_icon),
                 contentDescription = null,
-                tint = setColor(index,Seats.LeftSeat),
+                tint = leftColor,
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxSize()
@@ -95,7 +97,7 @@ val rightColor by remember {
             Icon(
                 painter = painterResource(id = R.drawable.seat_icon),
                 contentDescription = null,
-                tint =  setColor(index,Seats.RightSeat) ,
+                tint = rightColor,
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxSize()
@@ -131,4 +133,15 @@ fun createGridItem(): ImageVector {
 @Preview(showSystemUi = true)
 @Composable
 private fun Preview() {
+    SeatItem(
+        leftState = SeatUiState(),
+        rightState = SeatUiState(),
+        onItemClick = { _, _ -> },
+        angle = -10f,
+        modifier = Modifier.offset(x = 17.dp),
+        index = 1,
+        setColor = { _, _ ->
+            Color.Red
+        }
+    )
 }

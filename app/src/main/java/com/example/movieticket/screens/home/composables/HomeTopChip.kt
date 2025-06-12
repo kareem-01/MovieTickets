@@ -25,7 +25,7 @@ fun HomeChip(
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(32.dp))
-            .border(1.dp, color = border)
+            .border(1.dp, color = border,shape = RoundedCornerShape(32.dp))
             .background(
                 shape = RoundedCornerShape(32.dp),
                 color = color,

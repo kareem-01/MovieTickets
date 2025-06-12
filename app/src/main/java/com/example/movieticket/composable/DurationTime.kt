@@ -33,8 +33,7 @@ fun DurationBox(time: String, background: Color, textColor: Color) {
             .background(
                 color = background,
                 RoundedCornerShape(32.dp),
-            )
-            .blur(30.dp),
+            ),
         contentAlignment = Alignment.Center
     ) {
         Row(
